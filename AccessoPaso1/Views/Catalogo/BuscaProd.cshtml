@@ -19,8 +19,8 @@
         <tr>
             
             <td>@producto.nombre</td>
-            <td><img src="~/Content/Images/carro.jpg/@producto.imgen" width="60" /></td>
-            <td>@producto.precio</td>
+            <td><img src="~/Content/img/@producto.imgen" width="60" /></td>
+            <td>$@producto.precio</td>
             <td align="center">
                 <a href="@Url.Action("Comprar","Carro", new {id = producto.Id_producto})"    />
             </td>

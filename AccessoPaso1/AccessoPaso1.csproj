@@ -235,7 +235,9 @@
     <Content Include="Content\img\carrusel2.png" />
     <Content Include="Content\img\carrusel3.png" />
     <Content Include="Content\img\Envio.png" />
+    <Content Include="Content\img\Germany_Level1_F4U-1B.jpg" />
     <Content Include="Content\img\logo.svg" />
+    <Content Include="Content\img\titnic.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
