@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/style.css") @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+
+<body>
+    <!--Header-->
+
+
+    <header>
+        <div>
+        <!--<img src="~/Content/img/Compras.png" alt="Responsive image" class="img-fluid banner"> -->
+        <!--barra de navegacion-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="~/Content/img/logo.svg" width="30" height="30" class="logo espacio-nav d-inline-block align-top" alt="">
+            <a class="navbar-brand" href="#">Mymodels</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Categorias<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Agregar", "Create", "categorias", null, new { id = "add" })</li>
+                            <li>@Html.ActionLink("Ver todas", "Index", "categorias", null, new { id = "list" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Productos<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Agregar", "Create", "producto", null, new { id = "add" })</li>
+                            <li>@Html.ActionLink("Ver todas", "Index", "producto", null, new { id = "list" })</li>
+                        </ul>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+
+            </div>
+
+        </nav>
+    </div>
+    </header>
+
+
+
+    <main>
+        <div class="container">
+            @RenderBody()
+            <hr />
+
+        </div>
+    </main>
+    
+    <div>
+        <footer class="site-footer page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Acerca de</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Politicas de devoluciones</a></li>
+                            <li><a href="#">Envios</a></li>
+                            <li><a href="#">Avisos de privacidad</a></li>
+                            <li><a href="#">Terminos y condiciones</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Contacto</h6>
+                        <ul class="footer-links">
+                            <li><a>+52 722 111 1111 </a></li>
+                            <li><a href="mailto:soporte@mymodels.com">soporte@mymodels.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">
+                            Copyright &copy; 2020 Todos los derechos reservados para
+                            <a href="#">mymodels</a>.
+                        </p>
+                    </div>
+
+                    <!--
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                      </div>
+                    -->
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery") @Scripts.Render("~/bundles/bootstrap") @RenderSection("scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id_categoria" />
+    </Key>
+    <Property Name="Id_categoria" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__id_cat__5CD6CB2B" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Id_clente" />
+    </Key>
+    <Property Name="Id_clente" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="calle_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="colonia_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="num_tarjeta_credito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="dirEnteregas" Relationship="TiendaModel.FK__dirEntere__id_cl__5DCAEF64" FromRole="Cliente" ToRole="dirEnterega" />
+    <NavigationProperty Name="Orden_del_cliente" Relationship="TiendaModel.FK__Orden_del__id_cl__5EBF139D" FromRole="Cliente" ToRole="Orden_del_cliente" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="Id_empleado" />
+    </Key>
+    <Property Name="Id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Paqueteria">
+    <Key>
+      <PropertyRef Name="Id_paqueteria" />
+    </Key>
+    <Property Name="Id_paqueteria" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rfc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="web" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telContacto" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orden_del_cliente" Relationship="TiendaModel.FK__Orden_del__id_pa__60A75C0F" FromRole="Paqueteria" ToRole="Orden_del_cliente" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id_producto" />
+    </Key>
+    <Property Name="Id_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ult_actualizacion" Type="DateTime" Precision="0" />
+    <Property Name="imgen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="existencia" Type="Int32" />
+    <Property Name="stock" Type="Int32" />
+    <Property Name="id_categoria" Type="Int32" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__id_cat__5CD6CB2B" FromRole="Producto" ToRole="Categoria" />
+    <NavigationProperty Name="Orden_Producto" Relationship="TiendaModel.FK__Orden_Pro__id_pr__6FE99F9F" FromRole="Producto" ToRole="Orden_Producto" />
+  </EntityType>
+  <Association Name="FK__Producto__id_cat__5CD6CB2B">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id_categoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="contextTienda" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+    <EntitySet Name="Paqueterias" EntityType="Self.Paqueteria" />
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <AssociationSet Name="FK__Producto__id_cat__5CD6CB2B" Association="Self.FK__Producto__id_cat__5CD6CB2B">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <EntitySet Name="dirEnteregas" EntityType="TiendaModel.dirEnterega" />
+    <EntitySet Name="Orden_del_cliente" EntityType="TiendaModel.Orden_del_cliente" />
+    <EntitySet Name="Orden_Producto" EntityType="TiendaModel.Orden_Producto" />
+    <AssociationSet Name="FK__dirEntere__id_cl__5DCAEF64" Association="TiendaModel.FK__dirEntere__id_cl__5DCAEF64">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="dirEnterega" EntitySet="dirEnteregas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orden_del__id_cl__5EBF139D" Association="TiendaModel.FK__Orden_del__id_cl__5EBF139D">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Orden_del_cliente" EntitySet="Orden_del_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orden_del__id_di__5FB337D6" Association="TiendaModel.FK__Orden_del__id_di__5FB337D6">
+      <End Role="dirEnterega" EntitySet="dirEnteregas" />
+      <End Role="Orden_del_cliente" EntitySet="Orden_del_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orden_del__id_pa__60A75C0F" Association="TiendaModel.FK__Orden_del__id_pa__60A75C0F">
+      <End Role="Paqueteria" EntitySet="Paqueterias" />
+      <End Role="Orden_del_cliente" EntitySet="Orden_del_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orden_Pro__id_pr__6FE99F9F" Association="TiendaModel.FK__Orden_Pro__id_pr__6FE99F9F">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="Orden_Producto" EntitySet="Orden_Producto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="dirEnterega">
+    <Key>
+      <PropertyRef Name="Id_dirEnt" />
+    </Key>
+    <Property Name="Id_dirEnt" Type="Int32" Nullable="false" />
+    <Property Name="calle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_cliente" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="TiendaModel.FK__dirEntere__id_cl__5DCAEF64" FromRole="dirEnterega" ToRole="Cliente" />
+    <NavigationProperty Name="Orden_del_cliente" Relationship="TiendaModel.FK__Orden_del__id_di__5FB337D6" FromRole="dirEnterega" ToRole="Orden_del_cliente" />
+  </EntityType>
+  <EntityType Name="Orden_del_cliente">
+    <Key>
+      <PropertyRef Name="Id_orden_del_cliente" />
+    </Key>
+    <Property Name="Id_orden_del_cliente" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="num_confirmacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="id_dirEntrega" Type="Int32" />
+    <Property Name="id_paqueteria" Type="Int32" />
+    <Property Name="num_guia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fecha_envio" Type="DateTime" Precision="0" />
+    <Property Name="fecha_entrega" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Cliente" Relationship="TiendaModel.FK__Orden_del__id_cl__5EBF139D" FromRole="Orden_del_cliente" ToRole="Cliente" />
+    <NavigationProperty Name="dirEnterega" Relationship="TiendaModel.FK__Orden_del__id_di__5FB337D6" FromRole="Orden_del_cliente" ToRole="dirEnterega" />
+    <NavigationProperty Name="Paqueteria" Relationship="TiendaModel.FK__Orden_del__id_pa__60A75C0F" FromRole="Orden_del_cliente" ToRole="Paqueteria" />
+  </EntityType>
+  <EntityType Name="Orden_Producto">
+    <Key>
+      <PropertyRef Name="Id_orden_producto" />
+    </Key>
+    <Property Name="Id_orden_producto" Type="Int32" Nullable="false" />
+    <Property Name="id_producto" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="Producto" Relationship="TiendaModel.FK__Orden_Pro__id_pr__6FE99F9F" FromRole="Orden_Producto" ToRole="Producto" />
+  </EntityType>
+  <Association Name="FK__dirEntere__id_cl__5DCAEF64">
+    <End Type="TiendaModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+    <End Type="TiendaModel.dirEnterega" Role="dirEnterega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id_clente" />
+      </Principal>
+      <Dependent Role="dirEnterega">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orden_del__id_cl__5EBF139D">
+    <End Type="TiendaModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+    <End Type="TiendaModel.Orden_del_cliente" Role="Orden_del_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id_clente" />
+      </Principal>
+      <Dependent Role="Orden_del_cliente">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orden_del__id_di__5FB337D6">
+    <End Type="TiendaModel.dirEnterega" Role="dirEnterega" Multiplicity="0..1" />
+    <End Type="TiendaModel.Orden_del_cliente" Role="Orden_del_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dirEnterega">
+        <PropertyRef Name="Id_dirEnt" />
+      </Principal>
+      <Dependent Role="Orden_del_cliente">
+        <PropertyRef Name="id_dirEntrega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orden_del__id_pa__60A75C0F">
+    <End Type="TiendaModel.Paqueteria" Role="Paqueteria" Multiplicity="0..1" />
+    <End Type="TiendaModel.Orden_del_cliente" Role="Orden_del_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paqueteria">
+        <PropertyRef Name="Id_paqueteria" />
+      </Principal>
+      <Dependent Role="Orden_del_cliente">
+        <PropertyRef Name="id_paqueteria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orden_Pro__id_pr__6FE99F9F">
+    <End Type="TiendaModel.Producto" Role="Producto" Multiplicity="0..1" />
+    <End Type="TiendaModel.Orden_Producto" Role="Orden_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id_producto" />
+      </Principal>
+      <Dependent Role="Orden_Producto">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

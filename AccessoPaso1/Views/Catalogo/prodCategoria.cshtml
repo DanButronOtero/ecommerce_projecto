@@ -1,0 +1,25 @@
+﻿@using AccessoPaso1.Models
+@{
+    ViewBag.Title = "prodCategoria";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<div class="container">
+    <h2>@ViewBag.Catego</h2>
+    <div class="container">
+        <div class="col-xs-12 col-md-9">
+            <div class="row">
+                @foreach (Producto item in ViewBag.productos)
+                {
+                    <div class="col-xs-12 col-md-3">
+                        <div class="thumbnail">
+                            <img class="img-responsive" src="~/Content/img/"
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
