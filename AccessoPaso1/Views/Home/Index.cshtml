@@ -24,34 +24,68 @@
     </a>
 </div>
 
-<div class="text-center inner cover divisiones-index ">
-    <h1 class="cover-heading">Nuestra Empresa</h1>
-    <p class="lead texto-index">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
 
-
-</div>
 
 <div class="row  align-items-start text-center texto-index divisiones-index ">
-    <div class="col-md-6 float-md-left">
-        <h1 class="cover-heading">Misión</h1>
-        <p class="lead ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
-    </div>
-    <div class="col-md-6 float-md-right">
-        <h1 class="cover-heading">Visión</h1>
-        <p class="lead ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+    
+
+
+
+
+    <div class="text-center inner cover divisiones-index ">
+        <div class="col-md-6 float-md-left">
+            <div class="card-check">
+                <div class="card">
+                    <img src="~/Content/img/aereos.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <a href="@Url.Action("prodCategoria","Catalogo",new {idCat =2,nombre="Aereos"})" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 float-md-left">
+            <div class="card-check">
+
+                <div class="card">
+                    <img src="~/Content/img/terrestres.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="@Url.Action("prodCategoria","Catalogo",new {idCat =5,nombre="Terrestres"})" class="btn btn-primary"> Ir </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="text-center inner cover divisiones-index ">
+            <div class="col-md-6 float-md-left">
+                <div class="card-check">
+                    <div class="card">
+                        <img src="~/Content/img/maritimos.png" class="card-img-top" alt="..." href="@Url.Action("Maritimo","Subcategoria")">
+                        <div class="card-body">
+                            <a href="@Url.Action("prodCategoria","Catalogo",new {idCat =3,nombre="Maritimo"})" class="btn btn-primary">Ir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 float-md-left">
+                <div class="card-check">
+                    <div class="card">
+                        <img src="~/Content/img/infantil.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <a href="@Url.Action("prodCategoria","Catalogo",new {idCat =4,nombre="Infantil"})" class="btn btn-primary">Ir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
+
+
+
+   
 </div>

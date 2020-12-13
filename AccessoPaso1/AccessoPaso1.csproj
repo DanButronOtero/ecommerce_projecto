@@ -170,11 +170,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarroController.cs" />
     <Compile Include="Controllers\CatalogoController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\ProdCarro.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -194,6 +196,7 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Modelo.Context.cs">
       <AutoGen>True</AutoGen>
@@ -230,13 +233,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\aereos.png" />
     <Content Include="Content\img\banner_superior.png" />
     <Content Include="Content\img\carrusel1.png" />
     <Content Include="Content\img\carrusel2.png" />
     <Content Include="Content\img\carrusel3.png" />
     <Content Include="Content\img\Envio.png" />
     <Content Include="Content\img\Germany_Level1_F4U-1B.jpg" />
+    <Content Include="Content\img\infantil.png" />
     <Content Include="Content\img\logo.svg" />
+    <Content Include="Content\img\maritimos.png" />
+    <Content Include="Content\img\terrestres.png" />
     <Content Include="Content\img\titnic.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -322,9 +329,11 @@
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Catalogo\BuscaProd.cshtml" />
     <Content Include="Views\Catalogo\prodCategoria.cshtml" />
+    <Content Include="Views\Catalogo\BuscaCat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Carro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

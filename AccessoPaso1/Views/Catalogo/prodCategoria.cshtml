@@ -1,24 +1,31 @@
 ﻿@using AccessoPaso1.Models
 @{
     ViewBag.Title = "prodCategoria";
-    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div class="container">
-    <h2>@ViewBag.Catego</h2>
+
+    <h3> @ViewBag.Catego</h3>
     <div class="container">
-        <div class="col-xs-12 col-md-9">
-            <div class="row">
-                @foreach (Producto item in ViewBag.productos)
-                {
-                    <div class="col-xs-12 col-md-3">
-                        <div class="thumbnail">
-                            <img class="img-responsive" src="~/Content/img/"
+        <div class="row">
+            @foreach (Producto producto in ViewBag.productos)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="~/Content/img/productos/@producto.imgen" width="60" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@producto.nombre</h5>
+                            <p class="card-text">@producto.descripcion</p>
+                            <a href="@Url.Action("Comprar","Carro", new {id = producto.Id_producto})" class="btn btn-primary">$@producto.precio</a>
                         </div>
                     </div>
+                </div>
 
-                }
-            </div>
+            }
+
         </div>
     </div>
 </div>

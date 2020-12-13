@@ -33,36 +33,17 @@ namespace AccessoPaso1.Controllers
             return View();
         }
 
-        public ActionResult prodCategoria(int idCat)
-        {
+
+       
+        public ActionResult prodCategoria(int idCat,string nombre)
+        {   
             List<Producto> mercancia = null;
             var query = from p in db.Productoes
                         where p.id_categoria == idCat
                         select p;
-            if(idCat == 1)
-            {
-                // List<producto> lacteos = query.ToList();
-                mercancia = query.ToList();
-                ViewBag.Catego = "Lacteos";
-            }
-            if(idCat == 2)
-            {
-                // List<producto> carnes =  query.ToList();
-                mercancia = query.ToList();
-                ViewBag.Catego = "Carnes";
-            }
-            if (idCat == 2)
-            {
-                // List<producto> carnes =  query.ToList();
-                mercancia = query.ToList();
-                ViewBag.Catego = "Panaderia";
-            }
-            if (idCat == 2)
-            {
-                // List<producto> carnes =  query.ToList();
-                mercancia = query.ToList();
-                ViewBag.Catego = "Frutas y Vegetales";
-            }
+
+            mercancia = query.ToList();
+            ViewBag.Catego = nombre;
             ViewBag.productos = mercancia;
             return View();
         }

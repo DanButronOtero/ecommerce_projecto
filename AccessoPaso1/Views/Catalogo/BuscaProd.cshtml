@@ -3,28 +3,28 @@
     ViewBag.Title = "BuscaProd";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
 
-<h3> Lista de productos con nombre @ViewBag.SearchKey</h3>
-<table cellpadding="2" cellspacing="2" border="1">
-    <tr>
-        <th>Nombre</th>
-        <th>Foto</th>
-        <th>Precio</th>
-        <th>Comprar</th>
-    </tr>
-    
-    @foreach (
-        Producto producto in ViewBag.Listado)
-    {
-        <tr>
-            
-            <td>@producto.nombre</td>
-            <td><img src="~/Content/img/@producto.imgen" width="60" /></td>
-            <td>$@producto.precio</td>
-            <td align="center">
-                <a href="@Url.Action("Comprar","Carro", new {id = producto.Id_producto})"    />
-            </td>
-        </tr>
-    }
-    </table>
-    
+    <h3> Lista de productos con nombre @ViewBag.SearchKey</h3>
+    <div class="container">
+        <div class="row">
+            @foreach (Producto producto in ViewBag.Listado)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="~/Content/img/productos/@producto.imgen" width="60" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@producto.nombre</h5>
+                            <p class="card-text">@producto.descripcion</p>
+                            <a href="@Url.Action("Comprar","Carro", new {id = producto.Id_producto})" class="btn btn-primary">$@producto.precio</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+
+        </div>
+    </div>
+    </div>
