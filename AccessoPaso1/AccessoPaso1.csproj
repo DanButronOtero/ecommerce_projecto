@@ -330,6 +330,7 @@
     <Content Include="Views\Catalogo\BuscaProd.cshtml" />
     <Content Include="Views\Catalogo\prodCategoria.cshtml" />
     <Content Include="Views\Catalogo\BuscaCat.cshtml" />
+    <Content Include="Views\Catalogo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

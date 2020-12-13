@@ -29,13 +29,16 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class=" ml-3">@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li class=" ml-3">@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li class=" ml-3">@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <!--
+    <li class=" ml-3">@Html.ActionLink("Acerca de", "About", "Home")</li>
+    <li class=" ml-3">@Html.ActionLink("Contacto", "Contact", "Home")</li>
+    -->
+                    <li class=" ml-3">@Html.ActionLink("Catalogo", "Index", "Catalogo")</li>
                     <li class=" ml-3">
-                        @using (Html.BeginForm("BuscaProd", "Catalogo", FormMethod.Post, new {@class = "Form-inline" }))
+                        @using (Html.BeginForm("BuscaProd", "Catalogo", FormMethod.Post, new { @class = "Form-inline" }))
                         {
-                            <input class="form-control mr-sm-2" type="text" id="nomBuscar" name="nomBuscar" placeholder="producto" >
-                            
+                            <input class="form-control mr-sm-2" type="text" id="nomBuscar" name="nomBuscar" placeholder="producto">
+
 
                         }
                     </li>

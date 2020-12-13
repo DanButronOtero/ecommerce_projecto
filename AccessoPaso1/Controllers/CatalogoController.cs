@@ -15,6 +15,13 @@ namespace AccessoPaso1.Controllers
         // GET: Catalogo
         public ActionResult Index()
         {
+            using (db)
+            {
+                var query = from st in db.Productoes
+                            select st;
+                var listProd = query.ToList();
+                ViewBag.Listado = listProd;
+            }
             return View();
         }
         [HttpPost]
