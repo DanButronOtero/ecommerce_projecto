@@ -45,6 +45,14 @@
                             <li>@Html.ActionLink("Ver todas", "Index", "producto", null, new { id = "list" })</li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Paqueterias<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Agregar", "Create", "Paqueterias", null, new { id = "add" })</li>
+                            <li>@Html.ActionLink("Ver todas", "Index", "Paqueterias", null, new { id = "list" })</li>
+                        </ul>
+                    </li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
 

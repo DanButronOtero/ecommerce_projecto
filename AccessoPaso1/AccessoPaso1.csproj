@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaqueteriasController.cs" />
     <Compile Include="Models\ProdCarro.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -331,10 +332,15 @@
     <Content Include="Views\Catalogo\prodCategoria.cshtml" />
     <Content Include="Views\Catalogo\BuscaCat.cshtml" />
     <Content Include="Views\Catalogo\Index.cshtml" />
+    <Content Include="Views\Carro\Index.cshtml" />
+    <Content Include="Views\Paqueterias\Create.cshtml" />
+    <Content Include="Views\Paqueterias\Delete.cshtml" />
+    <Content Include="Views\Paqueterias\Details.cshtml" />
+    <Content Include="Views\Paqueterias\Edit.cshtml" />
+    <Content Include="Views\Paqueterias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Carro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
