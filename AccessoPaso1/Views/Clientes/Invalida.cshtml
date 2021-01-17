@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Invalida";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ERROR: Datos incorrectos, su tarjeta no es válida</h2>
+<h3>Necesita volver a registrarse con información que sea correcta, por favor verifique los datos antes de continuar.</h3>
+@using (Html.BeginForm("BorrarUser","Clientes", FormMethod.Get))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Continuar" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
