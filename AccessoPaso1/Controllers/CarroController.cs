@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AccessoPaso1.Models; 
-namespace AccessoPaso1.Controllers
+using AccesoPaso1.Models;
+
+namespace AccesoPaso1.Controllers
 {
     public class CarroController : Controller
     {
@@ -16,10 +17,10 @@ namespace AccessoPaso1.Controllers
         public ActionResult Agregar(int id)
         {
             ProdCarro carro = new ProdCarro();
-            if (Session["cart"] == null)
+            if(Session["cart"] == null)
             {
                 List<Item> cart = new List<Item>();
-                Producto P = carro.find(id);
+                producto P = carro.find(id);
                 string nam = P.nombre;
                 cart.Add(new Item { Product = carro.find(id), Cantidad = 1 });
                 Session["cart"] = cart;
@@ -34,22 +35,23 @@ namespace AccessoPaso1.Controllers
                 }
                 else
                 {
-                    Producto P = carro.find(id);
+                    producto P = carro.find(id);
                     string nam = P.nombre;
-                    cart.Add(new Item { Product = carro.find(id), Cantidad = 1 });
+                    cart.Add(new Item { Product = carro.find(id), Cantidad = 1});
                 }
             }
             return RedirectToAction("Index");
         }
+
         private int isExist(int id)
         {
             List<Item> cart = (List<Item>)Session["cart"];
-            for(int i = 0; i < cart.Count; i++)
+            for (int i = 0; i < cart.Count; i++)
                 if (cart[i].Product.Id_producto.Equals(id))
                     return i;
             return -1;
-            
         }
+
         public ActionResult Quitar(int id)
         {
             List<Item> cart = (List<Item>)Session["cart"];
@@ -57,7 +59,6 @@ namespace AccessoPaso1.Controllers
             cart.RemoveAt(index);
             Session["cart"] = cart;
             return RedirectToAction("Index");
-
         }
-    }
+    }//class
 }
