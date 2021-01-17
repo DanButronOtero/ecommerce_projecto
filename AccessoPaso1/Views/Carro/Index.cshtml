@@ -1,51 +1,69 @@
-﻿@using AccessoPaso1.Models
+@using AccesoPaso1.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<!DOCTYPE html>
 
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Carro</title>
-    </head>
-    <body>
-        <h3>Carrito de compra</h3>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Carro</title>
+</head>
+<body>
+    <h2>Carrito de compra</h2>
+    <div class="container">
         <table class="table table-bordered table-responsive table-striped">
-            
-            @foreach (Item item in (List<Item>)Session["cart"])
-            {
-                <tr>
-                    <td>
-                        <a href="@Url.Action("Quitar","Carro", new { id = item.Product.Id_producto})">Quitar</a>
-                    </td>
-                    <td>@item.Product.nombre</td>
-                    <td> <img class="img-responsive" src="~/Content/img/productos/@item.Product.imgen" width="80"> </td>
-
-                    <td>@item.Product.precio</td>
-                    <td>@item.Cantidad</td>
-                    <td>$@(item.Product.precio * item.Cantidad)</td>
+            <thead style="background-color:cornflowerblue">  
+                <tr class="info">
+                    <td>Opción</td>
+                    <td> Nombre</td>
+                    <td>Foto</td>
+                    <td>Precio</td>
+                    <td>Cantidad</td>
+                    <td>Sub Total</td>
                 </tr>
-            }
-            <tr>
-                <td align="right" colspan="5"> Total </td>
-                <td>
-                    @{
-                        List<Item> cart = (List<Item>)Session["cart"];
-                        var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+            </thead>
+            @{ if (Session["cart"] != null)
+                {
+                    foreach (Item item in (List<Item>)Session["cart"])
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Quitar", "Carro", new { id = item.Product.Id_producto })">Quitar</a>
+                            </td>
+                            <td>@item.Product.nombre</td>
+                            <td> <img class="img-responsive" src="~/Content/Images/@item.Product.imagen"> </td>
+
+                            <td>@item.Product.precio</td>
+                            <td>@item.Cantidad</td>
+                            <td>@(item.Product.precio * item.Cantidad)</td>
+                        </tr>
                     }
-                    $@total
-                </td>
-            </tr>
+                    <tr>
+                        <td align="right" colspan="5"> Total </td>
+                        <td>
+                            @{
+                                List<Item> cart = (List<Item>)Session["cart"];
+                                var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+                            }
+                            @total
+                        </td>
+                    </tr>
+                }
+            }
+
         </table>
+    </div>
+
         <br />
-        <a class="btn btn-warning" href="@Url.Action("Index","Home")"> Continuar comprando</a>
+        <a class="btn btn-info" href="@Url.Action("Index","Home")"> Continuar comprando</a>
         <p style="float:right; color:white">
-            @Html.ActionLink("Confirmar orden", "CrearOrden", "Pago", new { area = "" }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Confirmar orden", "CrearOrden", "Pago", new { area = "" }, new { @class = "btn btn-info" })
         </p>
-    </body>
-</div>
+</body>
+</html>
 
 
 
