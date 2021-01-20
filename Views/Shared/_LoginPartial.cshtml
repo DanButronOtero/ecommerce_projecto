@@ -1,0 +1,43 @@
+﻿@{ 
+    string num = Session["itemTotal"].ToString();
+}
+
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="btn" href="@Url.Action("Index","Carro")">
+                    <i class="fade fa-shopping-cart" style="font-size:24px;color:lightgoldenrodyellow"></i>
+                    <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+                       </a>
+            </li>
+
+            <li>
+                @*Html.ActionLink("Hello " + " ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Hola @num <span class="caret"> </span> </a>
+                <u1 class="dropdown-menu" role="menu">
+                    <li>@Html.ActionLink("Mis Pedidos","Index", "Pedidos", null, new { id = "add"})</li> 
+                </u1>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a></li>
+        </ul>
+    }
+}
+else
+{
+     <ul class="nav navbar-nav navbar-right">
+    <li>
+       <a class="btn" href="@Url.Action("Index","Carro")">
+            <i class="fade fa-shopping-cart" style="font-size:24px;color:lightgoldenrodyellow"></i>
+                    <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+                       </a>
+            </li>
+    
+        <li class="pull-right nav-derecha text-secondary">@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="pull-right nav-derecha text-secondary">@Html.ActionLink("Iniciar sesion", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+   </ul>
+}
